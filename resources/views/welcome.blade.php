@@ -1,95 +1,93 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master')
 
-        <title>Laravel</title>
+@section('content')
+<div class="container h100p">
+	<div class="w100p h100p disTable">
+		<div class="disTableCell verticalMid">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+			<div class="col-md-12 disInline w100p text-right">
+				<nav class="navbar navbar-right">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<form class="form-inline" role="form" action="/login/login.php" method="post">
+								<div class="checkbox text-left">
+									<label>
+										<input type="checkbox"> Remember me
+									</label>
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="exampleInputEmail3">Email address</label>
+									<input type="email" class="form-control" name="userEmail" id="InputEmail" placeholder="Enter email">
+								</div>
+								<div class="form-group">
+									<label class="sr-only" for="exampleInputPassword3">Password</label>
+									<input type="password" class="form-control" name="userPassword" id="InputPassword" placeholder="Password">
+								</div>
+								<button type="submit" class="btn btn-default">로그인</button>
+							</form>
+						</div>
+					</div>
+				</nav>
+			</div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+			<div class="col-md-12">
+				<div  class="col-md-8">
+					<img id="welcome-img">
+				</div>
+				<div class="col-md-4">
+					<form onsubmit="return registcheck(this)" name="register-form" role="form" action="/login/regist.php" method="post" class="">
+						<div class="form-group">
+							<h4>Register</h4>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label">Email</label>
+							<input type="email" name="userEmail" class="form-control" id="email" placeholder="Email">
+						</div>
 
-            .full-height {
-                height: 100vh;
-            }
+						<div class="form-group">
+							<label for="inputName" class="control-label">Name</label>
+							<div>
+								<input type="text" name="userName" class="form-control" id="name" placeholder="Name">
+							</div>
+						</div>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+						<div class="form-group">
+							<label for="inputPassword" class="control-label">Password</label>
+							<div class="">
+								<input type="password" id="password" name="userPassword" class="form-control" placeholder="Password">
+							</div>
+						</div>
 
-            .position-ref {
-                position: relative;
-            }
+						<div class="form-group">
+							<label for="inputPassword" class="control-label">Confirm Password</label>
+							<div class="">
+								<input type="password" name="userCPassword" class="form-control" id="passwordagain" placeholder="Confirm Password">
+							</div>
+						</div>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+						<div class="form-group">
+							<label for="inputPart" class="control-label">Instrument Part</label>
+							<div class="">
+								<select type="text" name ="userPart" class="form-control" id="inputGanre" placeholder="INSTRUMENT PART">
+									<option>Vocal</option>
+									<option>Drum</option>
+									<option>Synthesizer</option>
+									<option>Electric Guitar</option>
+									<option>Bass Guitar</option>
+									<option>Classic Guitar</option>
+									<option>Acoustic Guitar</option>
+								</select>
+							</div>
+						</div>
 
-            .content {
-                text-align: center;
-            }
+						<div class="form-group text-right">
+							<button type="submit" class="btn btn-default">계정 만들기</button>
+						</div>
+					</form>
+				</div>
+			</div>
 
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+		</div>
+	</div>
+</div>
+@endsection

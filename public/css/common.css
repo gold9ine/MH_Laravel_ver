@@ -1,0 +1,39 @@
+@charset "utf-8";
+html,body {width:100%; height:100%;}
+body {margin : 0;padding: 0;overflow:auto;font-size: 14px;background-color: #fff;font-family: sans-serif;}
+a {text-decoration:none !important}
+img,fieldset {border: 0px solid;}
+div {display: block;}
+.disInline{display: inline-block;}
+.disTable {display: table;}
+.disTableCell {display: table-cell;}
+.posAsolute {position: absolute;}
+.verticalMid {vertical-align: middle !important;}
+.lineHeight100p {line-height: 100%}
+/*.textCenter {text-align: center;} text-center*/
+
+.m0 {margin: 0 auto !important;}
+.padding0 {padding: 0;}
+.margin0 {margin: 0;}
+.borderR0 {border-radius: 0 !important;}
+
+.w200 {width: 200px;}
+.h100p {height: 100%;}
+.w5p {width: 5%;}
+.w20p {width: 20%;}
+.w25p {width: 25%;}
+.w45p {width: 45%;}
+.w50p {width: 50%;}
+.w100p {width: 100%;}
+
+.borderUnderBlue {border-bottom-color: #5bc0de;}
+button.topMenuBtn {background-color: white;}
+button:hover.topMenuBtn {background-color: #eee;}
+
+/* welcome page */
+#welcome-img
+{
+    content: url("/storage/loginform-bg.png");
+    width: 100%;
+    height: auto;
+}
