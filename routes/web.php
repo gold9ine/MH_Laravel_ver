@@ -12,40 +12,20 @@
 */
 
 // base
+Auth::routes();
+
 Route::get('/', 'WelcomeController@index');
 
-// home
-Route::get('auth/login', function () {
-	$credentials = [
-		'email' => 'John@example.com',
-		'password' => 'password'
-	];
+Route::get('/home', 'HomeController@index')->name('home');
 
-	if (! auth()->attempt($credentials, true)) {
-		return '로그인 정보가 정확하지 않습니다.';
-	}
+Route::get('/welcome', 'WelcomeController@index');
 
-	return redirect('protected');
-});
 
-Route::get('protected', ['middleware' => 'auth', function () {
-// Route::get('protected', function () {
-	dump(session()->all());
-	
-	// if (! auth()->check()) {
-	// 	return 'who are you?';
-	// }
-
-	return 'welcome ' . auth()->user()->name;
+// Route::get('/login', function () {
+//     return view('welcome');
 // });
-}]);
 
-Route::get('auth/logout', function () {
-	auth()->logout();
+// Route::get('/login', function () {
+// 	return redirect(route('welcome'));
+// });
 
-	return 'see you again!!';
-});
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');

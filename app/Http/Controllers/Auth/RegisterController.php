@@ -68,4 +68,14 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    // // registered 메소드를 Override
+    // protected function registered(Request $request, $user) {
+    // // 세션 생성
+    // 	Auth::attempt([
+    // 		'id' => $request->input('id'),
+    // 		'password' => $request->input('password')
+    // 	]);
+    // 	return response(null, 204);
+    // }
 }
