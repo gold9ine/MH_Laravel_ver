@@ -45,6 +45,7 @@ class LoginController extends Controller
     	return view('welcome');
     }
 
+    // login validation
     protected function validateLogin(Request $request)
     {
     	$this->validate($request, [
@@ -53,6 +54,7 @@ class LoginController extends Controller
     	]);
     }
 
+	 // login attempt
     protected function attemptLogin(Request $request)
     {
     	$email = $request->input('login_email');

@@ -12,11 +12,11 @@
                     <form class="form-horizontal" method="POST" action="">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('login_email') ? ' has-error' : '' }}">
+                            <label for="login_email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="login_email" type="email" class="form-control" name="login_email" value="{{ old('login_email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -26,15 +26,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                        <div class="form-group{{ $errors->has('login_password') ? ' has-error' : '' }}">
+                            <label for="login_password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="login_password" type="password" class="form-control" name="login_password" required>
 
-                                @if ($errors->has('password'))
+                                @if ($errors->has('login_password'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $errors->first('login_password') }}</strong>
                                     </span>
                                 @endif
                             </div>

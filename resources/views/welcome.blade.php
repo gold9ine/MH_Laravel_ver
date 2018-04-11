@@ -25,7 +25,7 @@
 								<div class="form-group">
 									<div class="form-group{{ $errors->has('login_email') ? ' has-error' : '' }}">
 										<label class="sr-only" for="login_email">E-Mail Address</label>
-										<input id="login_email" type="email" class="form-control" name="login_email" value="{{ old('login_email') }}" placeholder="Enter email" required autofocus>
+										<input id="login_email" type="email" class="form-control" name="login_email" value="{{ old('login_email') }}" placeholder="Enter email" required>
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="login_password">Password</label>
@@ -44,18 +44,18 @@
 			<!-- Join form -->
 			<div class="col-md-12">
 				<div  class="col-md-8">
-					<img id="welcome-img">
+					<img id="welcomeImg" class="w100p hauto">
 				</div>
 				<div class="col-md-4">
 					<form onsubmit="return registcheck(this)" name="register-form" role="form" method="POST" action="{{ route('register') }}">
 						{{ csrf_field() }}
-						
+
 						<div class="form-group">
 							<h4>Register</h4>
 						</div>
 						<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 							<label for="email" class="control-label">Email</label>
-							<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
+							<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{ old('email') }}" required>
 						</div>
 
 						<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
