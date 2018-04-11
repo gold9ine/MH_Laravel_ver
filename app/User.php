@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // projects 모델과 관계 연결
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

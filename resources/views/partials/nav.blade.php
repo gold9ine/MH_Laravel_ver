@@ -57,4 +57,5 @@
 
 	<!-- player -->
 	 @include('partials.player')
+	 
 </nav>
