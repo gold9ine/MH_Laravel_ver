@@ -52,6 +52,7 @@
 
 						<div class="form-group">
 							<h4>Register</h4>
+							<?php echo asset('storage/file.txt'); ?>
 						</div>
 						<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 							<label for="email" class="control-label">Email</label>
