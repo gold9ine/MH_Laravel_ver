@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+	use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+    	'name', 'email', 'picture', 'password',
     ];
 
     /**
@@ -24,12 +24,24 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+    	'password', 'remember_token',
     ];
 
     // projects 모델과 관계 연결
     public function projects()
     {
-        return $this->hasMany(Project::class);
+    	return $this->hasMany(Project::class);
+    }
+
+    // favorites 모델과 관계 연결
+    public function favorites()
+    {
+    	return $this->hasMany(Favorite::class);
+    }
+
+    // comments 모델과 관계 연결
+    public function comments()
+    {
+    	return $this->hasMany(Comment::class);
     }
 }

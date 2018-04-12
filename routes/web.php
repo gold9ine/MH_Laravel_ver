@@ -25,6 +25,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+// DB:listen(function ($query){
+// 	var_dump($query->sql);
+// 	// 	dump($query->sql);
+//  	// dump($query);
+// });
 
 
 Route::get('/home2', function () {

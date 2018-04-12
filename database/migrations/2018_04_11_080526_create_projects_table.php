@@ -22,11 +22,10 @@ class CreateProjectsTable extends Migration
             $table->integer('play_time')->default(0);
             $table->integer('meta_id')->default(0);
             $table->text('title')->nullable();
-            $table->text('artist')->nullable();
             $table->text('project_info')->nullable();
             $table->text('genre')->nullable();
             $table->text('album_image_path')->nullable();
-            $table->text('sound_image_path')->nullable();
+            $table->text('sound_path')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
