@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container h100p paddingTop100">
+	<!-- top padding -->
+	<div class="paddingTop100"></div>
 
-</div>
+	<!-- mainContent -->
+	<div id="mainContent" class="container">
+		@include('homeContent')
+	</div>
 @endsection

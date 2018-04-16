@@ -13,9 +13,10 @@
 			</button>
 
 			<!-- Branding Image -->
-			<a class="navbar-brand" href="{{ url('/') }}">
-				{{ config('app.name', 'Laravel') }}
-				<img id="modeChangeButton" class="tilt modeChangeButton">
+			<!-- <a id="modeChangeButton" class="navbar-brand" href="{{ url('/') }}"> -->
+			<a id="appName" class="navbar-brand cursorPointer">
+				{{ config('app.name', 'MH') }}
+				<!-- <img id="modeChangeButton" class="tilt modeChangeButton"> -->
 			</a>
 
 			<!-- Music Title -->
@@ -56,6 +57,6 @@
 	</div>
 
 	<!-- player -->
-	 @include('partials.player')
+	@include('partials.player')
 	 
 </nav>

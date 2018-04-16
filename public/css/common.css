@@ -4,6 +4,7 @@ body {margin : 0;padding: 0;overflow:auto;font-size: 14px;background-color: #fff
 a {text-decoration:none !important}
 img,fieldset {border: 0px solid;}
 div {display: block;}
+.cursorPointer {cursor: pointer;}
 .disInline{display: inline-block;}
 .disTable {display: table;}
 .disTableCell {display: table-cell;}

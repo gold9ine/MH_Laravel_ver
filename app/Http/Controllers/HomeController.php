@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $projects = \App\Project::with('user')->get();
+        // $projects = \App\Project::latest()->paginate(10);
+
+        return view('home', compact('projects'));
     }
 }
