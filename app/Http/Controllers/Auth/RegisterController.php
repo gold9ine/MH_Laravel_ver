@@ -62,10 +62,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $num = mt_rand(1, 9);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'picture' => 'user-default-img'. $num . '.png',
         ]);
     }
 }
