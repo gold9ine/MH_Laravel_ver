@@ -18,8 +18,8 @@ session_cache_expire(1800);
 
 <script type="text/javascript">
 // var baseDir = '/mh';
-var baseDir = '';
-var filePath = baseDir + '/uploads/music/';
+var baseDir = '/storage';
+var filePath = baseDir + '/uploads/album_sound/';
   // $(document).ready(function(){
   	$(function(){     
   		var cssSelector = { jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1" };
@@ -43,7 +43,7 @@ var options = {
 		removeTime: 'fast',
 		shuffleTime: 'fast'
 	},
-	swfPath:  baseDir + "/uploads/music",
+	swfPath:  baseDir + "/uploads/album_sound",
 	supplied: "m4a, oga, mp3",
 	smoothPlayBar: true,
 	keyEnabled: true,
@@ -60,7 +60,7 @@ myPlaylist.setPlaylist([
   		myPlaylist.add({
   			title:playtitle,
   			artist:playartist,
-  			mp3:  baseDir + "/uploads/music/" + playmp3
+  			mp3:  baseDir + "/uploads/album_sound/" + playmp3
   		});
   		listShow_temp();
   // session_play_add(playid, playtitle, playartist, playmp3);
@@ -103,40 +103,50 @@ function play_add_source(playid, playtitle, playartist, playmp3){
 
 	function session_play_add(playid, playtitle, playartist, playmp3){
 		var kind='0';
-  // var encode = escape(encodeURIComponent(playmp3));
-  $(document).ready(function(){
-  	jQuery.ajax({
-  		type:"POST",
-    // contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-    url:  baseDir + "/main/session_play_add.php?a="+playid+"&b="+playtitle+"&c="+playartist+"&d="+playmp3+"&e="+kind,
-    // contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-    success:function(){
-    	play_add(playid, playtitle, playartist, playmp3);
-    }, error: function(xhr,status,error){
-    	alert(error);
-    }
-}); 
-  }); 
-}
-function session_play_add_source(playid, playtitle, playartist, playmp3){
-	var kind='1';
-	$(document).ready(function(){
-		jQuery.ajax({
-			type:"POST",
-			url: baseDir + "/main/session_play_add.php?a=" + playid + "&b=" + playtitle + "&c=" + playartist + "&d=" + playmp3 + "&e=" + kind,
-			success:function() {
-				play_add_source(playid, playtitle, playartist, playmp3);
-			}, error: function(xhr,status,error){
-				alert(error);
-			}
+		$(document).ready(function(){
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+
+			jQuery.ajax({
+				type:"POST",
+				url: "session_play_add?a="+playid+"&b="+playtitle+"&c="+playartist+"&d="+playmp3+"&e="+kind,
+				success:function(){
+					play_add(playid, playtitle, playartist, playmp3);
+				}, error: function(xhr,status,error){
+					alert(error);
+				}
+			}); 
 		}); 
-	}); 
-}
-var temp_play_pro_id = new Array();
-var temp_play_pro_title = new Array();
-var temp_play_pro_artist = new Array();
-var temp_play_pro_path = new Array();
-var temp_play_source = new Array();
+	}
+
+	function session_play_add_source(playid, playtitle, playartist, playmp3){
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
+
+		var kind='1';
+		$(document).ready(function(){
+			jQuery.ajax({
+				type:"POST",
+				url: baseDir + "/main/session_play_add.php?a=" + playid + "&b=" + playtitle + "&c=" + playartist + "&d=" + playmp3 + "&e=" + kind,
+				success:function() {
+					play_add_source(playid, playtitle, playartist, playmp3);
+				}, error: function(xhr,status,error){
+					alert(error);
+				}
+			}); 
+		}); 
+	}
+	var temp_play_pro_id = new Array();
+	var temp_play_pro_title = new Array();
+	var temp_play_pro_artist = new Array();
+	var temp_play_pro_path = new Array();
+	var temp_play_source = new Array();
 </script>
 <?PHP
 if ( !isset($_SESSION['play_pro_id']) ) {
@@ -207,9 +217,9 @@ for($i = 0; $i < $play_count; $i++){
 			<div class="jp-gui jp-interface clearfix">
 
 
-					<div id="list-button-area" class="" onclick="listShow();">
-						<img id="jp-list-button" src="/storage/images/main/player/main_playbar_icon_playlist_over.png">
-					</div>
+				<div id="list-button-area" class="" onclick="listShow();">
+					<img id="jp-list-button" src="/storage/images/main/player/main_playbar_icon_playlist_over.png">
+				</div>
 
 
 				<div class="">
@@ -224,7 +234,7 @@ for($i = 0; $i < $play_count; $i++){
 						<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
 						<!-- <li><div id="list-button-area" onclick="listShow();"><img id="jp-list-button" src="/storage/images/main/player/main_playbar_icon_playlist_over.png"></div></li> -->
 					</ul>
-					<div id="play-list" class="jp-playlist playlist_show"><ul></ul></div>
+					<div id="play-list" class="jp-playlist w400 right0 posAsolute floplaylist_show"><ul></ul></div>
 					<div class="jp-progress">
 						<div class="jp-seek-bar">
 							<div class="jp-play-bar"></div>

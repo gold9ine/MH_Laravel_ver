@@ -29,7 +29,15 @@ Route::get('/mainHome', function () {
 
 });
 
+// seesion paly add
+Route::post('/session_play_add', function () {
+	return view('partials.session_play_add');
+});
 
+// seesion paly delete
+Route::get('/session_play_delete', function () {
+	return view('partials.session_play_delete');
+});
 
 // DB::listen(function ($query){
 // 	// var_dump($query->sql);

@@ -27,4 +27,10 @@ class HomeController extends Controller
         // return view('home', compact('projects'));
         return view('home');
     }
+
+    public function playAdd()
+    {
+        // dd('3333');
+        echo('dddd');
+    }
 }
