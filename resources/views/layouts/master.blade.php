@@ -29,7 +29,8 @@
 	<script type="text/javascript" src="/js/common.js"></script>
 	<!-- <script type="text/javascript" src="/js/test.js"></script> -->
 
-	@include('partials.head')
+	<!-- @include('partials.config') -->
+	<!-- @include('partials.head') -->
 </head>
 <body>
 		<!-- nav -->

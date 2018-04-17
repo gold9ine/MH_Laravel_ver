@@ -6,6 +6,6 @@
 
 	<!-- mainContent -->
 	<div id="mainContent" class="container">
-		@include('homeContent')
+		@include('home.homeContent')
 	</div>
 @endsection

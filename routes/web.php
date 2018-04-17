@@ -25,9 +25,9 @@ Route::resource('projects', 'HomeController');
 
 // go main home
 Route::get('/mainHome', function () {
-	return view('homeContent');
-});
+	return view('home.homeContent');
 
+});
 
 
 
@@ -38,6 +38,6 @@ Route::get('/mainHome', function () {
 // });
 
 
-Route::get('/test', function () {
-	return view('test');
-});
+// Route::get('/test', function () {
+// 	return view('test');
+// });
