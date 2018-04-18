@@ -59,4 +59,11 @@
 <!-- Side area -->
 <div class="col-md-3">
 	col-md-3
+	<?php
+	$data = Session::all();
+	echo "<pre>";
+	var_dump($data);
+	echo "</pre>";
+
+	?>
 </div>

@@ -13,21 +13,19 @@
 			</button>
 
 			<!-- Branding Image -->
-			<!-- <a id="modeChangeButton" class="navbar-brand" href="{{ url('/') }}"> -->
 			<a id="appName" class="navbar-brand cursorPointer">
 				{{ config('app.name', 'MH') }}
-				<!-- <img id="modeChangeButton" class="tilt modeChangeButton"> -->
 			</a>
 
 			<!-- Music Title -->
 			<a id="sound-title-artist-area" class="navbar-brand">
 				<img id="music-icon" src="/storage/images/main/icon/music.png">
-				<h5><div id="sound-title-artist" class="jp-title2">Oh HY - What is love</div></h5>
+				<div id="jp_container_1" class="jp-audio">
+					<h5><div id="sound-title-artist" class="jp-title2"></div></h5>
+				</div>
 			</a>
 
 		</div>
-
-
 
 		<div class="collapse navbar-collapse" id="app-navbar-collapse">
 			<!-- Right Side Of Navbar -->

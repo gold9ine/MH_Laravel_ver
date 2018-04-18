@@ -8,6 +8,7 @@ div {display: block;}
 .disInline{display: inline-block;}
 .disTable {display: table;}
 .disTableCell {display: table-cell;}
+.disNone {display: none;}
 .posAsolute {position: absolute;}
 .posRelative {position: relative;}
 .verticalMid {vertical-align: middle !important;}

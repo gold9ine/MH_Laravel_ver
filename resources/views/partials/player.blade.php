@@ -1,35 +1,20 @@
-<?PHP
-// header('Content-Type: text/html; charset=utf-8');
-session_cache_expire(1800);
-// session_start();
-// session_unset();
-// array_pop($_SESSION['play_pro_title']);//($_SESSION['play_pro_title'][0]);
-?>
 <!-- player -->
-<!-- <link type="text/css" href="/include/css/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" /> -->
-<!-- <link type="text/css" href="/include/css/skin/midnight.black/jplayer.midnight.black.css" rel="stylesheet" /> -->
 <link rel="stylesheet" type="text/css" href="/css/skin/morning.light/jplayer.morning.light.css"/>
-<!-- <script type="text/javascript" src="/include/js/jquery-1.7.2.min.js"></script> -->
-<!-- <script type="text/javascript" src="/include/js/jquery-2.1.0.min.js"></script> -->
 <script src="/js/jquery.jplayer.min.js"></script>
 <script src="/js/add-on/jplayer.playlist.min.js"></script>
 <script src="/js/add-on/jquery.jplayer.inspector.js"></script>
-<!-- <script src="/include/js/popcorn/popcorn.jplayer.js"></script> -->
 
 <script type="text/javascript">
 // var baseDir = '/mh';
 var baseDir = '/storage';
 var filePath = baseDir + '/uploads/album_sound/';
-  // $(document).ready(function(){
-  	$(function(){     
-  		var cssSelector = { jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1" };
-  		var playlist = [
-  		{
-  			title:"The Title",
+$(function(){     
+	var cssSelector = { jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1" };
+	var playlist = [
+	{
+		title:"The Title",
     artist:"The Artist", // Optional
-    // free: Boolean, // Optional - Generates links to the media
     mp3: "filePath"
-    // poster: "Poster URL" // Optional
 }
 ]; // Empty playlist
 var options = {
@@ -56,13 +41,13 @@ myPlaylist.setPlaylist([
 
 
 
-  	function play_add(playid, playtitle, playartist, playmp3){
-  		myPlaylist.add({
-  			title:playtitle,
-  			artist:playartist,
-  			mp3:  baseDir + "/uploads/album_sound/" + playmp3
-  		});
-  		listShow_temp();
+function play_add(playid, playtitle, playartist, playmp3){
+	myPlaylist.add({
+		title:playtitle,
+		artist:playartist,
+		mp3:  baseDir + "/uploads/album_sound/" + playmp3
+	});
+	listShow_temp();
   // session_play_add(playid, playtitle, playartist, playmp3);
 }
 function play_add_source(playid, playtitle, playartist, playmp3){
@@ -78,27 +63,27 @@ function play_add_source(playid, playtitle, playartist, playmp3){
 <script>
 	function listShow(){
 		var listShow = $('#play-list');
-		if(listShow.hasClass('playlist_show'))
-		{ 
-			listShow.removeClass('playlist_show');
-			listShow.addClass('playlist_none');
+		if(listShow.hasClass('disTable'))
+		{
+			listShow.removeClass('disTable');
+			listShow.addClass('disNone');
 		}
 		else
 		{
-			listShow.removeClass('playlist_none');
-			listShow.addClass('playlist_show');
+			listShow.removeClass('disNone');
+			listShow.addClass('disTable');
 		}
 	}
 	function listShow_temp(){
 		var listShow = $('#play-list');
-		listShow.removeClass('playlist_none');
-		listShow.addClass('playlist_show');
-		var mark = setTimeout("close_list()", 3000); 
+		listShow.removeClass('disNone');
+		listShow.addClass('disTable');
+		var mark = setTimeout("close_list()", 3000);
 	}
 	function close_list(){
 		var listShow = $('#play-list');
-		listShow.removeClass('playlist_show');
-		listShow.addClass('playlist_none');
+		listShow.removeClass('disTable');
+		listShow.addClass('disNone');
 	}
 
 	function session_play_add(playid, playtitle, playartist, playmp3){
@@ -133,7 +118,7 @@ function play_add_source(playid, playtitle, playartist, playmp3){
 		$(document).ready(function(){
 			jQuery.ajax({
 				type:"POST",
-				url: baseDir + "/main/session_play_add.php?a=" + playid + "&b=" + playtitle + "&c=" + playartist + "&d=" + playmp3 + "&e=" + kind,
+				url: "/session_play_add.php?a=" + playid + "&b=" + playtitle + "&c=" + playartist + "&d=" + playmp3 + "&e=" + kind,
 				success:function() {
 					play_add_source(playid, playtitle, playartist, playmp3);
 				}, error: function(xhr,status,error){
@@ -149,46 +134,32 @@ function play_add_source(playid, playtitle, playartist, playmp3){
 	var temp_play_source = new Array();
 </script>
 <?PHP
-if ( !isset($_SESSION['play_pro_id']) ) {
-    // session_register( $_SESSION['play_pro_id'] = array());
-	$_SESSION['play_pro_id'] = array();
+if ( !Session::has('play_pro_id') ) {
+	 Session::put('play_pro_id', array());
 }
-if ( !isset($_SESSION['play_pro_title']) ) { 
-    // session_register( $_SESSION['play_pro_title'] = array());
-	$_SESSION['play_pro_title'] = array(); 
+if ( !Session::has('play_pro_title') ) {
+	 Session::put('play_pro_title', array());
 }
-if ( !isset($_SESSION['play_pro_artist']) ) { 
-    // session_register( $_SESSION['play_pro_artist'] = array());
-	$_SESSION['play_pro_artist'] = array();
+if ( !Session::has('play_pro_artist') ) {
+	 Session::put('play_pro_artist', array());
 }
-if ( !isset($_SESSION['play_pro_path']) ) { 
-    // session_register( $_SESSION['play_pro_path'] = array());
-	$_SESSION['play_pro_path'] = array(); 
+if ( !Session::has('play_pro_path') ) {
+	 Session::put('play_pro_path', array());
 }
-if ( !isset($_SESSION['temp_play_source']) ) { 
-    // session_register( $_SESSION['temp_play_source'] = array());
-	$_SESSION['temp_play_source'] = array(); 
+if ( !Session::has('temp_play_source') ) {
+	 Session::put('temp_play_source', array());
 }
-// sound=> 0, source=1;
 
-// array_push($_SESSION['play_pro_id'], '17','12');
-// array_push($_SESSION['play_pro_title'], 'TRAX','Comfom');
-// array_push($_SESSION['play_pro_artist'], 'user2','user1');
-// array_push($_SESSION['play_pro_path'], '아스트로비츠-집에오는길.mp3','서태지 - Take Five.mp3');
-
-// array_pop($_SESSION['play_pro_id']);
-// array_pop($_SESSION['play_pro_title']);
-// array_pop($_SESSION['play_pro_artist']);
-// array_pop($_SESSION['play_pro_path']);
-$play_count = count($_SESSION['play_pro_id']);
+$play_count = count(Session::get('play_pro_id'));
 echo ("<script>var play_count='$play_count';var pc=0;</script>");
 
 for($i = 0; $i < $play_count; $i++){
-	$temp_play_pro_id = $_SESSION['play_pro_id'][$i];
-	$temp_play_pro_title = $_SESSION['play_pro_title'][$i];
-	$temp_play_pro_artist = $_SESSION['play_pro_artist'][$i];
-	$temp_play_pro_path = $_SESSION['play_pro_path'][$i];
-	$temp_play_source = $_SESSION['temp_play_source'][$i];
+	$temp_play_pro_id = Session::get('play_pro_id.' . $i);
+	$temp_play_pro_title = Session::get('play_pro_title.' . $i);
+	$temp_play_pro_artist = Session::get('play_pro_artist.' . $i);
+	$temp_play_pro_path = Session::get('play_pro_path.' . $i);
+	$temp_play_source = Session::get('temp_play_source.' . $i);
+
 	echo("<script>temp_play_pro_id[pc]='$temp_play_pro_id';</script>");
 	echo("<script>temp_play_pro_title[pc]='$temp_play_pro_title';</script>");
 	echo("<script>temp_play_pro_artist[pc]='$temp_play_pro_artist';</script>");
@@ -200,27 +171,24 @@ for($i = 0; $i < $play_count; $i++){
 	$(function(){
 		for(var i = 0; i < play_count; i++) {
 			if(temp_play_source[i] == 0) {
-      // console.log(temp_play_source[i]);
-      play_add(temp_play_pro_id[i], temp_play_pro_title[i], temp_play_pro_artist[i], temp_play_pro_path[i]);
-  }
-  else{console.log(temp_play_source[i]);
-        // console.log("bbbb");
-        play_add_source(temp_play_pro_id[i], temp_play_pro_title[i], temp_play_pro_artist[i], temp_play_pro_path[i]);
-    }
-}
-});
+				play_add(temp_play_pro_id[i], temp_play_pro_title[i], temp_play_pro_artist[i], temp_play_pro_path[i]);
+			}
+			else{console.log(temp_play_source[i]);
+				play_add_source(temp_play_pro_id[i], temp_play_pro_title[i], temp_play_pro_artist[i], temp_play_pro_path[i]);
+			}
+		}
+	});
 </script>
 <div id="player-area" class="container">
 	<div id="jquery_jplayer_1" class="jp-jplayer"></div>
 	<div id="jp_container_1" class="jp-audio">
+		
 		<div class="jp-type-single">
 			<div class="jp-gui jp-interface clearfix">
-
 
 				<div id="list-button-area" class="" onclick="listShow();">
 					<img id="jp-list-button" src="/storage/images/main/player/main_playbar_icon_playlist_over.png">
 				</div>
-
 
 				<div class="">
 					<ul class="jp-controls">
@@ -232,9 +200,8 @@ for($i = 0; $i < $play_count; $i++){
 						<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
 						<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
 						<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-						<!-- <li><div id="list-button-area" onclick="listShow();"><img id="jp-list-button" src="/storage/images/main/player/main_playbar_icon_playlist_over.png"></div></li> -->
 					</ul>
-					<div id="play-list" class="jp-playlist w400 right0 posAsolute floplaylist_show"><ul></ul></div>
+					<div id="play-list" class="jp-playlist disTable w400 right0 posAsolute"><ul></ul></div>
 					<div class="jp-progress">
 						<div class="jp-seek-bar">
 							<div class="jp-play-bar"></div>
@@ -254,9 +221,6 @@ for($i = 0; $i < $play_count; $i++){
 						</ul>
 					</div>
 				</div>
-
-
-
 
 			</div>
 		</div>

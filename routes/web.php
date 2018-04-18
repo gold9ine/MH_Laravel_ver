@@ -46,6 +46,6 @@ Route::get('/session_play_delete', function () {
 // });
 
 
-// Route::get('/test', function () {
-// 	return view('test');
-// });
+Route::get('/test', function () {
+	return view('test');
+});
