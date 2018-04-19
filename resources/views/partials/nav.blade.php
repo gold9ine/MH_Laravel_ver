@@ -18,10 +18,10 @@
 			</a>
 
 			<!-- Music Title -->
-			<a id="sound-title-artist-area" class="navbar-brand">
+			<a id="sound-title-artist-area" class="navbar-brand paddLeft0">
 				<img id="music-icon" src="/storage/images/main/icon/music.png">
 				<div id="jp_container_1" class="jp-audio">
-					<h5><div id="sound-title-artist" class="jp-title2"></div></h5>
+					<div id="sound-title-artist" class="jp-title2 fontSize10 paddingTop5"></div>
 				</div>
 			</a>
 

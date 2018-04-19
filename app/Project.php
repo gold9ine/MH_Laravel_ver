@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     // 대량할당 없음
-	protected $fillable = ['title', 'artist'];
+	protected $fillable = ['user_id', 'title', 'project_info', 'genre', 'image_path', 'sound_path'];
 
 	public function user()
 	{

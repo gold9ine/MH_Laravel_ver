@@ -18,10 +18,10 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('/welcome', 'WelcomeController@index');
 
-// Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('projects', 'HomeController');
+Route::resource('projects', 'ProjectsController');
 
 // go main home
 Route::get('/mainHome', function () {
@@ -39,13 +39,15 @@ Route::get('/session_play_delete', function () {
 	return view('partials.session_play_delete');
 });
 
+
 // DB::listen(function ($query){
 // 	// var_dump($query->sql);
 // 		dump($query->sql);
-//  	// dump($query);
+//  // dump($query);
 // });
 
 
 Route::get('/test', function () {
 	return view('test');
 });
+

@@ -24,7 +24,7 @@ class CreateProjectsTable extends Migration
             $table->text('title')->nullable();
             $table->text('project_info')->nullable();
             $table->text('genre')->nullable();
-            $table->text('album_image_path')->nullable();
+            $table->text('image_path')->nullable();
             $table->text('sound_path')->nullable();
             $table->timestamps();
 

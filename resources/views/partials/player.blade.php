@@ -135,19 +135,19 @@ function play_add_source(playid, playtitle, playartist, playmp3){
 </script>
 <?PHP
 if ( !Session::has('play_pro_id') ) {
-	 Session::put('play_pro_id', array());
+	Session::put('play_pro_id', array());
 }
 if ( !Session::has('play_pro_title') ) {
-	 Session::put('play_pro_title', array());
+	Session::put('play_pro_title', array());
 }
 if ( !Session::has('play_pro_artist') ) {
-	 Session::put('play_pro_artist', array());
+	Session::put('play_pro_artist', array());
 }
 if ( !Session::has('play_pro_path') ) {
-	 Session::put('play_pro_path', array());
+	Session::put('play_pro_path', array());
 }
 if ( !Session::has('temp_play_source') ) {
-	 Session::put('temp_play_source', array());
+	Session::put('temp_play_source', array());
 }
 
 $play_count = count(Session::get('play_pro_id'));
@@ -201,7 +201,7 @@ for($i = 0; $i < $play_count; $i++){
 						<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
 						<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
 					</ul>
-					<div id="play-list" class="jp-playlist disTable w400 right0 posAsolute"><ul></ul></div>
+					<div id="play-list" class="jp-playlist disTable w300 right0 posAsolute"><ul></ul></div>
 					<div class="jp-progress">
 						<div class="jp-seek-bar">
 							<div class="jp-play-bar"></div>

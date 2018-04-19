@@ -16,7 +16,7 @@ $q_result = $dbq->fetchAll(PDO::FETCH_ASSOC);
 $i = 0;
 foreach ($q_result as $row) :
 	$pro_dbid[$i]               = $row['id'];
-	$pro_dbALBUM_IMAGE_PATH[$i] = $row['album_image_path'];
+	$pro_dbALBUM_IMAGE_PATH[$i] = $row['image_path'];
 	$pro_dbTITLE[$i]            = $row['title'];
 	$pro_dbARTIST[$i]           = $row['name'];
 	$pro_dbPROJECT_INFO[$i]     = $row['project_info'];

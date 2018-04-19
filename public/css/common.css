@@ -24,6 +24,8 @@ div {display: block;}
 
 .m0 {margin: 0 auto !important;}
 .padding0 {padding: 0;}
+.paddLeft0 {padding-left: 0;}
+.paddingTop5 {padding-top: 5px;}
 .paddingTop100 {padding-top: 100px;}
 .margin0 {margin: 0;}
 .marginTop100 {margin-top: 100px;}
@@ -39,9 +41,12 @@ div {display: block;}
 .hauto {height: auto;}
 .maxh100p {max-height: 100%;}
 .w200 {width: 200px;}
+.w300 {width: 300px;}
 .w400 {width: 400px;}
 .h30 {height: 30px;}
 .h240 {height: 240px;}
+
+.fontSize10 {font-size: 10px;}
 
 .bgs100 {background-size: 100% 100%;}
 .bgc494c9c {background-color: #494C9C} /*purple lady*/
@@ -52,7 +57,10 @@ button.topMenuBtn {background-color: white;}
 button:hover.topMenuBtn {background-color: #eee;}
 
 /* commone */
-/*.container {width: 940px;}*/
+@media screen and (max-width: 360px)
+{
+	.container {width: 360px;}
+}
 
 /* welcome page */
 #welcomeImg {content: url("/storage/images/login/loginform-bg.png");}
@@ -71,12 +79,12 @@ background-size: 100% 100%;*/
 	width: 140px;
 }
 .smallBtn {
-    width: 20px;
+	width: 20px;
 	height: 20px;
 	margin-right: 15px;
-    display: inline-block;
-    background-repeat: no-repeat;
-    cursor: pointer;
+	display: inline-block;
+	background-repeat: no-repeat;
+	cursor: pointer;
 }
 
 .favorite-delete-button {
@@ -107,9 +115,16 @@ background-size: 100% 100%;*/
 	background-size: contain;
 }
 .rank-title > h5{
-  color: palevioletred;
+	color: palevioletred;
 }
 .rank-info{
 }
 .rank-info > h5{
+}
+
+.sideFrame
+{
+	border-radius: 5px;
+	padding: 5px;
+	border: 1px solid #ccc;
 }
