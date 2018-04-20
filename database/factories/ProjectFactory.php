@@ -15,7 +15,9 @@ $factory->define(App\Project::class, function (Faker $faker) {
     	// 'genre' => $genre[$genreKey],
         'genre' => $genre,
     	'image_path' => 'albumimage' . $num . '.jpg',
-    	'sound_path' => 'sound' . $num . '.mp3',
+        'image_name' => 'albumimage' . $num . '.jpg',
+        'sound_path' => 'sound' . $num . '.mp3',
+        'sound_name' => 'sound' . $num . '.mp3',
     	'created_at' => $date,
     	'updated_at' => $date,
     ];

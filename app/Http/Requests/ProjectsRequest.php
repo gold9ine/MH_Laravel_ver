@@ -11,6 +11,9 @@ class ProjectsRequest extends FormRequest
      *
      * @return bool
      */
+
+    protected $dontflash = ['image_path', 'sound_path'];
+
     public function authorize()
     {
     	return true;
@@ -26,8 +29,8 @@ class ProjectsRequest extends FormRequest
     	return [
     		'title'        => ['required', 'min:1', 'max:20'],
     		'genre'        => ['required'],
-    		'image_path'   => ['required'],
-    		'sound_path'   => ['required'],
+    		'image_path'   => ['required', 'mimes:jpg,jpeg,png,gif,bmp', 'max:30000'],
+    		// 'sound_path'   => ['required', 'mimes:mp3', 'max:30000'],
     		'project_info' => ['required', 'min:1', 'max:100'],
     	];
     }

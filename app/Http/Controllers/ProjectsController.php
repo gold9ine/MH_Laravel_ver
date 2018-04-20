@@ -35,13 +35,25 @@ class ProjectsController extends Controller
      */
     public function store(ProjectsRequest $request)
     {
-        $project = auth()->user()->projects()->create($request->all());
+    	// file upload
+    	if ($request->hasFile('image_path') && $request->hasFile('sound_path')) {
+    		$imgfile = $request->file('image_path');
+    		$imgname = str_random().filter_var($imgfile->getClientOriginalName(), FILTER_SANITIZE_URL);
+    		$imgfile->move(\App\Project::attachments_path('storage/uploads/album_img'), $imgname);
 
-        if (! $project) {
-            return back()->with('flash_message', '프로젝트가 등록되지 않습니다.')->withInput();
-        }
+    		$soundfile = $request->file('sound_path');
+    		$soundname = str_random().filter_var($soundfile->getClientOriginalName(), FILTER_SANITIZE_URL);
+    		$soundfile->move(\App\Project::attachments_path('storage/uploads/album_sound'), $soundname);
 
-        return redirect(route('home'))->with('flash_message', '프로젝트가 등록되었습니다.');
+    		// Database upload
+    		$project = auth()->user()->projects()->create($request->all());
+
+    		if ($project) {
+    			return redirect(route('home'))->with('flash_message', '프로젝트가 등록되었습니다.');
+    		}
+    	}
+
+    	return back()->with('flash_message', '프로젝트가 등록되지 않습니다.')->withInput();
     }
 
     /**
